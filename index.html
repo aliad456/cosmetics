@@ -7,20 +7,21 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&family=Frank+Ruhl+Libre:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=David+Libre:wght@400;700&family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         :root {
-            /* פלטת צבעים מעודכנת - יותר בוגרת ומקצועית */
-            --primary: #D8A48F; /* ניוד-ורוד מתוחכם */
-            --primary-dark: #B4846C;
+            /* פלטת צבעים חדשה ומדויקת: ורוד עדין, אפור בהיר, שחור */
+            --primary-pink: #F4D3D3; /* ורוד עדין מאוד */
+            --primary-dark: #D8A48F; /* ורוד מעט כהה יותר */
+            --light-grey: #F5F5F5; /* אפור בהיר לרקעים */
             --black: #1A1A1A;
-            --grey-text: #4A4A4A;
+            --grey-text: #333333; /* טקסט כהה יותר */
             --white: #ffffff;
-            --off-white: #FAFAFA;
-            --border: #E5E5E5;
+            --bg-grey: #F0F0F0; /* אפור בהיר כללי */
+            --border-grey: #DCDCDC; /* מסגרות אפורות עדינות */
         }
 
         * {
@@ -34,16 +35,20 @@
         }
 
         body {
-            font-family: 'Assistant', sans-serif;
-            background-color: var(--white);
+            font-family: 'Heebo', sans-serif; /* פונט טקסט נקי ומודרני */
+            background-color: var(--bg-grey);
             color: var(--black);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        h1, h2, h3, .logo {
-            font-family: 'Frank Ruhl Libre', serif;
+        h1, h2, h3, .logo, .section-header h2, .ba-card .hover-label {
+            font-family: 'David Libre', serif; /* פונט כותרות קלאסי ויוקרתי */
             letter-spacing: -0.5px;
+        }
+        
+        h2 {
+            font-size: 3.5rem;
         }
 
         a { text-decoration: none; color: inherit; transition: 0.3s; }
@@ -66,6 +71,7 @@
         .btn:hover {
             background-color: transparent;
             color: var(--black);
+            border-color: var(--black);
         }
 
         .btn-outline {
@@ -87,7 +93,7 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(5px);
             z-index: 1000;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--border-grey);
         }
 
         .navbar {
@@ -100,7 +106,7 @@
         }
 
         .logo {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -119,7 +125,7 @@
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--primary-dark);
         }
 
         /* HERO SECTION */
@@ -128,8 +134,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            /* רקע נקי ומואר יותר */
-            background: linear-gradient(to right, rgba(255,255,255,0.8), rgba(255,255,255,0.4)), url('https://images.unsplash.com/photo-1596462502278-27bfdd403348?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            /* רקע נקי ומואר יותר עם נגיעה אפורה */
+            background: linear-gradient(to right, rgba(240,240,240,0.8), rgba(255,255,255,0.4)), url('https://images.unsplash.com/photo-1596462502278-27bfdd403348?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             text-align: center;
@@ -204,13 +210,14 @@
         }
 
         #scrollTopBtn:hover {
-            background-color: var(--primary);
+            background-color: var(--primary-dark);
             transform: translateY(-3px);
         }
 
         /* Sections General */
         section {
             padding: 7rem 2rem;
+            background-color: var(--white); /* רוב הסקציות בלבן נקי */
         }
 
         .container {
@@ -224,7 +231,7 @@
         }
 
         .section-header h2 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
         }
         
@@ -244,14 +251,15 @@
 
         .service-item {
             text-align: center;
-            padding: 2rem;
-            border: 1px solid var(--border);
+            padding: 3rem 2rem;
+            border: 1px solid var(--border-grey);
             transition: 0.4s;
+            background-color: var(--white);
         }
 
         .service-item:hover {
-            border-color: var(--primary);
-            background: var(--off-white);
+            border-color: var(--black);
+            background: var(--primary-pink); /* רקע ורוד עדין בהובר */
         }
 
         .service-item h3 {
@@ -261,7 +269,7 @@
 
         .service-icon {
             font-size: 2.5rem;
-            color: var(--primary);
+            color: var(--black);
         }
 
         /* BEFORE AFTER - עיצוב נקי */
@@ -302,7 +310,8 @@
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background: white;
+            background: var(--black);
+            color: var(--white);
             padding: 8px 20px;
             border-radius: 30px;
             font-size: 0.9rem;
@@ -313,7 +322,7 @@
 
         /* CONTACT */
         .contact-section {
-            background-color: var(--off-white);
+            background-color: var(--primary-pink); /* רקע ורוד עדין לסקציית הקשר */
         }
 
         .form-box {
@@ -322,7 +331,7 @@
             background: var(--white);
             padding: 4rem;
             box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-            border: 1px solid var(--border);
+            border: 1px solid var(--border-grey);
         }
 
         .input-group {
@@ -332,9 +341,9 @@
         .input-group input, .input-group select {
             width: 100%;
             padding: 15px;
-            border: 1px solid var(--border);
+            border: 1px solid var(--border-grey);
             background: transparent;
-            font-family: 'Assistant', sans-serif;
+            font-family: 'Heebo', sans-serif;
             font-size: 1rem;
             outline: none;
             transition: 0.3s;
@@ -412,7 +421,7 @@
         </div>
     </section>
 
-    <section id="services">
+    <section id="services" style="background-color: var(--white);">
         <div class="container">
             <div class="section-header">
                 <h2>המומחיות שלנו</h2>
@@ -438,7 +447,7 @@
         </div>
     </section>
 
-    <section id="gallery" style="background-color: #FAFAFA;">
+    <section id="gallery" style="background-color: var(--light-grey);">
         <div class="container">
             <div class="section-header">
                 <h2>לפני ואחרי</h2>
