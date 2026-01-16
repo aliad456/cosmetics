@@ -1,86 +1,520 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>סטודיו קוסמטיקה פרימיום</title>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-<style>
-:root{
---pink:#ff4f9a;--pink2:#ffd1e6;--ink:#0c0c12;--muted:#6b6b78;--line:rgba(12,12,18,.12);
-}
-*{box-sizing:border-box}
-body{margin:0;font-family:Heebo,system-ui;background:#fff;color:var(--ink)}
-.grain{position:fixed;inset:0;background:url('./assets/grain.svg');pointer-events:none;opacity:.8}
-.wrap{max-width:1200px;margin:auto;padding:48px;position:relative}
-h1{font-size:clamp(40px,6vw,68px);line-height:1.05;margin:0 0 16px}
-h2{font-size:32px;margin:0 0 12px}
-p{color:var(--muted);line-height:1.8}
-.btn{padding:16px 26px;border-radius:22px;border:1px solid var(--line);background:#fff;font-weight:900;cursor:pointer}
-.btn.primary{background:linear-gradient(135deg,var(--pink),var(--pink2));border:none;color:#fff}
-.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
-.hero img{width:100%;border-radius:42px;box-shadow:0 40px 120px rgba(0,0,0,.2)}
-.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:80px 0}
-.metric{border:1px solid var(--line);border-radius:28px;padding:28px;text-align:center}
-.metric span{font-size:44px;color:var(--pink);font-weight:900}
-.slider{margin:80px 0}
-.range{width:100%}
-.testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:80px 0}
-.test{border:1px solid var(--line);border-radius:28px;padding:24px}
-.calendar{border:1px solid var(--line);border-radius:32px;padding:32px;margin:80px 0}
-.calendar-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-.day{padding:14px;border-radius:14px;border:1px solid var(--line);text-align:center}
-.day.active{background:var(--pink);color:#fff;font-weight:900}
-@media(max-width:900px){
-.hero,.metrics,.testimonials{grid-template-columns:1fr}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COSMETICS - יופי בסטנדרט אחר</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&family=Frank+Ruhl+Libre:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* פלטת צבעים מעודכנת - יותר בוגרת ומקצועית */
+            --primary: #D8A48F; /* ניוד-ורוד מתוחכם */
+            --primary-dark: #B4846C;
+            --black: #1A1A1A;
+            --grey-text: #4A4A4A;
+            --white: #ffffff;
+            --off-white: #FAFAFA;
+            --border: #E5E5E5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Assistant', sans-serif;
+            background-color: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Frank Ruhl Libre', serif;
+            letter-spacing: -0.5px;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+
+        /* כפתורים */
+        .btn {
+            display: inline-block;
+            background-color: var(--black);
+            color: var(--white);
+            padding: 16px 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border: 1px solid var(--black);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--black);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--black);
+            color: var(--black);
+        }
+
+        .btn-outline:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--black);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .nav-links a {
+            font-weight: 400;
+            font-size: 1.1rem;
+            color: var(--grey-text);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* רקע נקי ומואר יותר */
+            background: linear-gradient(to right, rgba(255,255,255,0.8), rgba(255,255,255,0.4)), url('https://images.unsplash.com/photo-1596462502278-27bfdd403348?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--black);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: var(--grey-text);
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        /* Floating Social Icons */
+        .social-sidebar {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            background: var(--white);
+            box-shadow: -2px 0 10px rgba(0,0,0,0.05);
+            border-radius: 10px 0 0 10px;
+            overflow: hidden;
+        }
+
+        .social-sidebar a {
+            padding: 15px;
+            font-size: 1.5rem;
+            color: var(--black);
+            transition: 0.3s;
+            display: flex;
+            justify-content: center;
+        }
+
+        .social-sidebar a.whatsapp:hover { background: #25D366; color: white; }
+        .social-sidebar a.instagram:hover { background: #C13584; color: white; }
+        .social-sidebar a.facebook:hover { background: #4267B2; color: white; }
+
+        /* Scroll Top Button */
+        #scrollTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 99;
+            background-color: var(--black);
+            color: white;
+            border: none;
+            outline: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: 0.3s;
+        }
+
+        #scrollTopBtn:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Sections General */
+        section {
+            padding: 7rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--grey-text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* SERVICES GRID - מינימליסטי */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .service-item {
+            text-align: center;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: 0.4s;
+        }
+
+        .service-item:hover {
+            border-color: var(--primary);
+            background: var(--off-white);
+        }
+
+        .service-item h3 {
+            font-size: 1.8rem;
+            margin: 1.5rem 0;
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        /* BEFORE AFTER - עיצוב נקי */
+        .ba-container {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .ba-card {
+            width: 350px;
+            height: 450px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .ba-card img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.4s ease;
+        }
+
+        .ba-card .after-img {
+            opacity: 0;
+            z-index: 2;
+        }
+
+        .ba-card:hover .after-img { opacity: 1; }
+
+        .hover-label {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            z-index: 3;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* CONTACT */
+        .contact-section {
+            background-color: var(--off-white);
+        }
+
+        .form-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 4rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            border: 1px solid var(--border);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--border);
+            background: transparent;
+            font-family: 'Assistant', sans-serif;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            border-color: var(--black);
+        }
+
+        footer {
+            background: var(--black);
+            color: white;
+            text-align: center;
+            padding: 3rem;
+            border-top: 1px solid #333;
+        }
+        
+        footer p {
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .navbar { flex-direction: column; gap: 10px; }
+            .social-sidebar { 
+                top: auto; 
+                bottom: 0; 
+                right: 0; 
+                width: 100%; 
+                flex-direction: row; 
+                justify-content: center;
+                border-radius: 10px 10px 0 0;
+                transform: none;
+            }
+            .social-sidebar a { flex: 1; padding: 15px; }
+            #scrollTopBtn { bottom: 80px; left: 20px; } /* מעל הסרגל סושיאל במובייל */
+            .form-box { padding: 2rem; }
+        }
+    </style>
 </head>
 <body>
-<div class="grain"></div>
-<div class="wrap">
 
-<section class="hero">
-<div>
-<h1>קוסמטיקה שמרגישים בה הבדל</h1>
-<p>סטודיו פרימיום לעיצוב גבות וציפורניים עם תהליך מדויק, ניסיון מוכח וחוויית לקוחה מתקדמת.</p>
-<button class="btn primary">קביעת תור</button>
-</div>
-<img src="./assets/hero.svg">
-</section>
+    <button onclick="topFunction()" id="scrollTopBtn" title="חזרה למעלה">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
-<section class="metrics">
-<div class="metric"><span class="count" data-to="10">0</span><br>שנות מומחיות</div>
-<div class="metric"><span class="count" data-to="2300">0</span><br>טיפולים</div>
-<div class="metric"><span class="count" data-to="98">0</span>% לקוחות חוזרות</div>
-</section>
+    <div class="social-sidebar">
+        <a href="#" class="whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    </div>
 
-<section class="slider">
-<h2>לפני / אחרי</h2>
-<input class="range" type="range" min="0" max="100" value="50">
-<p>דמו סליידר – מראה תוצאות בצורה ויזואלית</p>
-</section>
+    <header>
+        <div class="navbar">
+            <div class="logo">COSMETICS</div>
+            <nav class="nav-links">
+                <a href="#about">אודות</a>
+                <a href="#services">טיפולים</a>
+                <a href="#gallery">גלריה</a>
+                <a href="#contact">צור קשר</a>
+            </nav>
+        </div>
+    </header>
 
-<section class="testimonials">
-<div class="test">⭐⭐⭐⭐⭐<p>“רמה אחרת לגמרי, דיוק מושלם”</p></div>
-<div class="test">⭐⭐⭐⭐⭐<p>“חזרתי שוב ושוב, אין תחרות”</p></div>
-<div class="test">⭐⭐⭐⭐⭐<p>“הרגשתי בידיים בטוחות”</p></div>
-</section>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>אומנות הטיפוח והיופי</h1>
+            <p>בוטיק קוסמטיקה מתקדם המתמחה בבניית ציפורניים אנטומית ועיצוב גבות בהתאמה אישית.</p>
+            <div style="margin-top: 2rem;">
+                <a href="#contact" class="btn">תיאום תור</a>
+                <a href="#gallery" class="btn btn-outline" style="margin-right: 15px;">צפייה בעבודות</a>
+            </div>
+        </div>
+    </section>
 
-<section class="calendar">
-<h2>בחירת מועד (דמו)</h2>
-<div class="calendar-grid">
-<div class="day">א'</div><div class="day">ב'</div><div class="day active">ג'</div><div class="day">ד'</div><div class="day">ה'</div>
-</div>
-</section>
+    <section id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>המומחיות שלנו</h2>
+                <p>דיוק חסר פשרות, היגיינה ברמה רפואית, וחומרים מהשורה הראשונה.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+                    <h3>מניקור ג'ל ובנייה</h3>
+                    <p>טכניקה רוסית משולבת לניקיון יסודי, מבנה אנטומי לחיזוק הציפורן וגימור מושלם שמחזיק לאורך זמן.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-eye"></i></div>
+                    <h3>עיצוב גבות</h3>
+                    <p>שיקום ועיצוב גבות טבעיות, התאמת צורה למבנה הפנים, צביעה והרמת גבות (Lamination).</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-spa"></i></div>
+                    <h3>פדיקור אסתטי</h3>
+                    <p>טיפול מפנק ומקצועי לכפות הרגליים, להסרת עור יבש והענקת מראה מטופח ובריא.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-</div>
+    <section id="gallery" style="background-color: #FAFAFA;">
+        <div class="container">
+            <div class="section-header">
+                <h2>לפני ואחרי</h2>
+                <p>העבירי את העכבר על התמונה כדי לראות את השינוי</p>
+            </div>
+            
+            <div class="ba-container">
+                <div class="ba-card">
+                    <img src="https://images.unsplash.com/photo-1616002567284-030830371359?ixlib=rb-1.2.1&w=500&q=80" alt="Before">
+                    <img src="https://images.unsplash.com/photo-1607947651301-9841c960160b?ixlib=rb-1.2.1&w=500&q=80" class="after-img" alt="After">
+                    <div class="hover-label">ציפורניים</div>
+                </div>
+                
+                <div class="ba-card">
+                    <img src="https://images.unsplash.com/photo-1588517025039-298519c49780?ixlib=rb-1.2.1&w=500&q=80" alt="Before">
+                    <img src="https://images.unsplash.com/photo-1594052810822-413626ad50bc?ixlib=rb-1.2.1&w=500&q=80" class="after-img" alt="After" style="object-position: top;">
+                    <div class="hover-label">גבות</div>
+                </div>
+                
+                <div class="ba-card">
+                    <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?ixlib=rb-1.2.1&w=500&q=80" alt="Before">
+                    <img src="https://images.unsplash.com/photo-1542451012-150a53137f43?ixlib=rb-1.2.1&w=500&q=80" class="after-img" alt="After">
+                    <div class="hover-label">מניקור</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script>
-document.querySelectorAll('.count').forEach(el=>{
- let to=+el.dataset.to,cur=0;
- let i=setInterval(()=>{cur+=Math.ceil(to/40); if(cur>=to){cur=to;clearInterval(i)} el.textContent=cur},30);
-});
-</script>
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>בואי נתאם לך תור</h2>
+            </div>
+            <div class="form-box">
+                <form>
+                    <div class="input-group">
+                        <input type="text" placeholder="שם מלא" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="tel" placeholder="טלפון נייד" required>
+                    </div>
+                    <div class="input-group">
+                        <select>
+                            <option>בניית ציפורניים</option>
+                            <option>עיצוב גבות</option>
+                            <option>פדיקור</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn" style="width: 100%;">שלחי פרטים</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 COSMETICS. כל הזכויות שמורות. <br> Powered by <strong>Landing.team</strong></p>
+    </footer>
+
+    <script>
+        // לוגיקה לכפתור חזרה למעלה
+        var mybutton = document.getElementById("scrollTopBtn");
+
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
 </body>
 </html>
