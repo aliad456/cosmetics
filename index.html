@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>סטודיו קוסמטיקה פרימיום</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+--pink:#ff4f9a;--pink2:#ffd1e6;--ink:#0c0c12;--muted:#6b6b78;--line:rgba(12,12,18,.12);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Heebo,system-ui;background:#fff;color:var(--ink)}
+.grain{position:fixed;inset:0;background:url('./assets/grain.svg');pointer-events:none;opacity:.8}
+.wrap{max-width:1200px;margin:auto;padding:48px;position:relative}
+h1{font-size:clamp(40px,6vw,68px);line-height:1.05;margin:0 0 16px}
+h2{font-size:32px;margin:0 0 12px}
+p{color:var(--muted);line-height:1.8}
+.btn{padding:16px 26px;border-radius:22px;border:1px solid var(--line);background:#fff;font-weight:900;cursor:pointer}
+.btn.primary{background:linear-gradient(135deg,var(--pink),var(--pink2));border:none;color:#fff}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.hero img{width:100%;border-radius:42px;box-shadow:0 40px 120px rgba(0,0,0,.2)}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:80px 0}
+.metric{border:1px solid var(--line);border-radius:28px;padding:28px;text-align:center}
+.metric span{font-size:44px;color:var(--pink);font-weight:900}
+.slider{margin:80px 0}
+.range{width:100%}
+.testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:80px 0}
+.test{border:1px solid var(--line);border-radius:28px;padding:24px}
+.calendar{border:1px solid var(--line);border-radius:32px;padding:32px;margin:80px 0}
+.calendar-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.day{padding:14px;border-radius:14px;border:1px solid var(--line);text-align:center}
+.day.active{background:var(--pink);color:#fff;font-weight:900}
+@media(max-width:900px){
+.hero,.metrics,.testimonials{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="wrap">
+
+<section class="hero">
+<div>
+<h1>קוסמטיקה שמרגישים בה הבדל</h1>
+<p>סטודיו פרימיום לעיצוב גבות וציפורניים עם תהליך מדויק, ניסיון מוכח וחוויית לקוחה מתקדמת.</p>
+<button class="btn primary">קביעת תור</button>
+</div>
+<img src="./assets/hero.svg">
+</section>
+
+<section class="metrics">
+<div class="metric"><span class="count" data-to="10">0</span><br>שנות מומחיות</div>
+<div class="metric"><span class="count" data-to="2300">0</span><br>טיפולים</div>
+<div class="metric"><span class="count" data-to="98">0</span>% לקוחות חוזרות</div>
+</section>
+
+<section class="slider">
+<h2>לפני / אחרי</h2>
+<input class="range" type="range" min="0" max="100" value="50">
+<p>דמו סליידר – מראה תוצאות בצורה ויזואלית</p>
+</section>
+
+<section class="testimonials">
+<div class="test">⭐⭐⭐⭐⭐<p>“רמה אחרת לגמרי, דיוק מושלם”</p></div>
+<div class="test">⭐⭐⭐⭐⭐<p>“חזרתי שוב ושוב, אין תחרות”</p></div>
+<div class="test">⭐⭐⭐⭐⭐<p>“הרגשתי בידיים בטוחות”</p></div>
+</section>
+
+<section class="calendar">
+<h2>בחירת מועד (דמו)</h2>
+<div class="calendar-grid">
+<div class="day">א'</div><div class="day">ב'</div><div class="day active">ג'</div><div class="day">ד'</div><div class="day">ה'</div>
+</div>
+</section>
+
+</div>
+
+<script>
+document.querySelectorAll('.count').forEach(el=>{
+ let to=+el.dataset.to,cur=0;
+ let i=setInterval(()=>{cur+=Math.ceil(to/40); if(cur>=to){cur=to;clearInterval(i)} el.textContent=cur},30);
+});
+</script>
+</body>
+</html>
