@@ -3,570 +3,345 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COSMETICS - יופי בסטנדרט אחר</title>
+    <title>GLAM Studio - איפור קבוע, ציפורניים וגבות</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=David+Libre:wght@400;500;700&family=Heebo:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;800&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            /* פלטת צבעים חדשה - בוטיק ורוד */
-            --bg-pink-main: #FFF3F5; /* רקע ורוד פודרה עדין לכל האתר */
-            --bg-pink-deeper: #FBE8EC; /* ורוד טיפה יותר עמוק להדגשות */
-            --card-warm-white: #FFFCFD; /* לבן חמים לכרטיסים שיישבו על הוריד */
-            
-            --accent-pink-dark: #D48F9F; /* ורוד עתיק כהה לאלמנטים */
-            
-            --text-charcoal: #2A2A2A; /* שחור-פחם רך יותר לכותרות */
-            --text-grey: #555555; /* אפור חם לטקסט רץ */
-            
-            --border-soft: #F0D0D8; /* מסגרות ורודות עדינות */
+            --primary: #D4A373; /* גוון זהב-ניוד יוקרתי */
+            --primary-light: #FAEDCD;
+            --accent: #BC6C25;
+            --bg-pink: #FEFAE0; /* רקע שמנת נקי */
+            --bg-white: #FFFFFF;
+            --text-dark: #2C1810;
+            --text-gray: #6B7280;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Heebo', sans-serif;
-            background-color: var(--bg-pink-main); /* שינוי רקע כללי */
-            color: var(--text-charcoal);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, .logo, .hover-label {
-            font-family: 'David Libre', serif;
-            letter-spacing: -0.5px;
-            color: var(--text-charcoal);
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Assistant', sans-serif; background-color: var(--bg-pink); color: var(--text-dark); overflow-x: hidden; }
         
-        h2 {
-            font-size: 3.5rem;
-            font-weight: 700;
-        }
-
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-
-        /* כפתורים מעודכנים */
+        /* טיפוגרפיה */
+        h1, h2, h3 { font-family: 'Assistant', sans-serif; font-weight: 800; line-height: 1.1; }
+        .serif { font-family: 'Playfair Display', serif; font-style: italic; }
+        
+        /* כפתורים */
         .btn {
             display: inline-block;
-            background-color: var(--text-charcoal);
-            color: var(--card-warm-white);
-            padding: 16px 42px;
-            font-size: 1rem;
+            padding: 16px 40px;
+            background-color: var(--text-dark);
+            color: white;
+            text-decoration: none;
             font-weight: 600;
-            letter-spacing: 1px;
-            border: 2px solid var(--text-charcoal);
-            transition: all 0.3s ease;
-            cursor: pointer;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: 0.3s;
             text-transform: uppercase;
-            border-radius: 4px;
+            letter-spacing: 1px;
+            border: 1px solid var(--text-dark);
         }
-
+        
         .btn:hover {
             background-color: transparent;
-            color: var(--text-charcoal);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            color: var(--text-dark);
+            transform: scale(1.02);
         }
 
         .btn-outline {
-            background: transparent;
-            border: 2px solid var(--text-charcoal);
-            color: var(--text-charcoal);
-            border-radius: 4px;
+            background-color: transparent;
+            color: var(--text-dark);
+            border: 1px solid var(--text-dark);
         }
-
+        
         .btn-outline:hover {
-            background: var(--text-charcoal);
-            color: var(--card-warm-white);
-            transform: translateY(-2px);
-             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            background-color: var(--text-dark);
+            color: white;
         }
 
-        /* HEADER - מותאם לרקע החדש */
+        /* HEADER */
         header {
-            position: fixed;
-            width: 100%;
-            top: 0;
-            /* רקע חצי שקוף בגוון הוריד החדש */
-            background: rgba(255, 243, 245, 0.97);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-soft);
-        }
-
-        .navbar {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1.2rem 2rem;
+            padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
         }
 
-        .logo {
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
+        .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: 2px; }
+        .logo span { color: var(--accent); }
 
-        .nav-links {
-            display: flex;
-            gap: 3rem;
-        }
-
-        .nav-links a {
-            font-weight: 500;
-            font-size: 1.1rem;
-            color: var(--text-grey);
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-pink-dark);
-        }
-
-        /* HERO SECTION */
+        /* HERO SECTION - כמו באתר ששלחת */
         .hero {
-            min-height: 100vh;
+            position: relative;
+            height: 90vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            /* גרדיאנט ורוד עדין על התמונה */
-            background: linear-gradient(to right, rgba(255, 243, 245, 0.9), rgba(255, 243, 245, 0.5)), url('https://images.unsplash.com/photo-1596462502278-27bfdd403348?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center center;
             text-align: center;
-            padding-top: 80px;
+            background: url('https://images.unsplash.com/photo-1596462502278-27bfdd403348?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            padding: 20px;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255,255,255,0.3);
+            backdrop-filter: blur(2px);
         }
 
         .hero-content {
-            max-width: 850px;
-            padding: 3rem;
-            /* רקע הילה עדין לטקסט */
-            background: rgba(255, 252, 253, 0.6);
-            border-radius: 20px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255,255,255,0.5);
+            position: relative;
+            z-index: 2;
+            background: rgba(255,255,255,0.8);
+            padding: 60px 40px;
+            max-width: 600px;
+            border: 1px solid white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
-        .hero h1 {
-            font-size: 5rem;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 15px; color: var(--text-dark); }
+        .hero p { font-size: 1.2rem; margin-bottom: 30px; color: var(--text-gray); }
 
-        .hero p {
-            font-size: 1.5rem;
-            color: var(--text-grey);
-            margin-bottom: 3rem;
-            font-weight: 400;
-        }
-
-        /* Floating Social Icons */
-        .social-sidebar {
-            position: fixed;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            background: var(--card-warm-white);
-            box-shadow: -2px 0 15px rgba(212, 143, 159, 0.15); /* צל ורדרד */
-            border-radius: 10px 0 0 10px;
-            overflow: hidden;
-            border: 1px solid var(--border-soft);
-            border-right: none;
-        }
-
-        .social-sidebar a {
+        /* BENEFITS STRIP */
+        .benefits-strip {
+            background: var(--text-dark);
+            color: white;
             padding: 15px;
-            font-size: 1.5rem;
-            color: var(--text-charcoal);
-            transition: 0.3s;
             display: flex;
             justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
+        .benefit-item { display: flex; align-items: center; gap: 10px; }
 
-        .social-sidebar a.whatsapp:hover { background: #25D366; color: white; }
-        .social-sidebar a.instagram:hover { background: #C13584; color: white; }
-        .social-sidebar a.facebook:hover { background: #4267B2; color: white; }
+        /* SERVICES GRID */
+        .section { padding: 80px 20px; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 3rem; }
+        .section-title span { color: var(--accent); display: block; font-size: 1.2rem; font-weight: 400; margin-bottom: 10px; }
 
-        /* Scroll Top Button */
-        #scrollTopBtn {
-            display: none;
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            z-index: 99;
-            background-color: var(--text-charcoal);
-            color: var(--card-warm-white);
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: 0.3s;
-        }
-
-        #scrollTopBtn:hover {
-            background-color: var(--accent-pink-dark);
-            transform: translateY(-3px);
-        }
-
-        /* Sections General */
-        section {
-            padding: 8rem 2rem;
-            background-color: var(--bg-pink-main); /* וידוא שכל הסקציות בורוד */
-        }
-
-        .container {
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
-        
-        .section-header p {
-            font-size: 1.3rem;
-            color: var(--text-grey);
-            max-width: 650px;
-            margin: 0 auto;
-            font-weight: 400;
-        }
-
-        /* SERVICES GRID - כרטיסים בולטים */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-        }
-
-        .service-item {
-            text-align: center;
-            padding: 4rem 2.5rem;
-            /* כרטיס בהיר על רקע ורוד */
-            background-color: var(--card-warm-white);
-            border: 1px solid var(--border-soft);
-            border-radius: 15px;
-            transition: all 0.4s ease;
-            box-shadow: 0 5px 20px rgba(212, 143, 159, 0.05);
-        }
-
-        .service-item:hover {
-            border-color: var(--accent-pink-dark);
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(212, 143, 159, 0.15);
-        }
-
-        .service-item h3 {
-            font-size: 2rem;
-            margin: 1.5rem 0;
-            font-weight: 700;
-        }
-        
-        .service-item p {
-            font-size: 1.1rem;
-            color: var(--text-grey);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            color: var(--accent-pink-dark);
-            margin-bottom: 1rem;
-        }
-
-        /* BEFORE AFTER - עיצוב נקי */
-        #gallery {
-             /* רקע טיפה שונה לגלריה כדי ליצור עניין */
-            background-color: var(--bg-pink-deeper);
-            border-top: 1px solid var(--border-soft);
-            border-bottom: 1px solid var(--border-soft);
-        }
-
-        .ba-container {
-            display: flex;
-            gap: 2.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .ba-card {
-            width: 360px;
-            height: 480px;
+        .service-card {
             position: relative;
+            height: 450px;
             overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-            background: var(--card-warm-white);
-            padding: 10px; /* מסגרת לבנה לתמונה */
+            group: cursor;
         }
 
-        .ba-card img {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: calc(100% - 20px);
-            height: calc(100% - 20px);
+        .service-card img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            transition: opacity 0.5s ease;
-            border-radius: 8px;
+            transition: 0.5s;
         }
 
-        .ba-card .after-img {
-            opacity: 0;
-            z-index: 2;
-        }
+        .service-card:hover img { transform: scale(1.1); }
 
-        .ba-card:hover .after-img { opacity: 1; }
-
-        .hover-label {
+        .service-info {
             position: absolute;
-            bottom: 30px;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            text-align: center;
+        }
+
+        .service-info h3 { font-size: 1.8rem; margin-bottom: 10px; }
+        .service-btn {
+            color: white;
+            text-decoration: underline;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        /* REVIEWS / SOCIAL PROOF */
+        .reviews-section { background: white; text-align: center; }
+        .reviews-container {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            scrollbar-width: none;
+        }
+        
+        .review-card {
+            min-width: 300px;
+            background: var(--bg-pink);
+            padding: 30px;
+            border-radius: 0;
+            text-align: right;
+            border: 1px solid #eee;
+        }
+        .stars { color: var(--accent); margin-bottom: 15px; }
+
+        /* STICKY MOBILE CTA */
+        .sticky-cta {
+            position: fixed;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--text-charcoal);
-            color: var(--card-warm-white);
-            padding: 10px 25px;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: 600;
-            z-index: 3;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-            letter-spacing: 1px;
-        }
-
-        /* CONTACT */
-        .form-box {
-            max-width: 700px;
-            margin: 0 auto;
-            background: var(--card-warm-white);
-            padding: 4rem;
-            box-shadow: 0 10px 40px rgba(212, 143, 159, 0.1);
-            border: 1px solid var(--border-soft);
-            border-radius: 15px;
-        }
-
-        .input-group {
-            margin-bottom: 25px;
-        }
-
-        .input-group input, .input-group select {
-            width: 100%;
-            padding: 18px;
-            border: 1px solid var(--border-soft);
-            background: var(--bg-pink-main); /* רקע שדות הקלט */
-            font-family: 'Heebo', sans-serif;
-            font-size: 1.1rem;
-            outline: none;
+            width: 90%;
+            max-width: 400px;
+            background: var(--text-dark);
+            color: white;
+            padding: 15px;
+            border-radius: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            z-index: 999;
+            text-decoration: none;
             transition: 0.3s;
-            border-radius: 8px;
-            color: var(--text-charcoal);
-        }
-
-        .input-group input:focus, .input-group select:focus {
-            border-color: var(--accent-pink-dark);
-            background: var(--card-warm-white);
-        }
-
-        footer {
-            background: var(--text-charcoal);
-            color: var(--card-warm-white);
-            text-align: center;
-            padding: 4rem 2rem;
         }
         
-        footer p {
-            opacity: 0.8;
-            font-size: 1rem;
-            font-weight: 300;
-        }
-        
-        footer strong {
-            color: var(--accent-pink-dark);
-        }
+        .sticky-cta:hover { transform: translateX(-50%) translateY(-5px); }
+        .sticky-text { display: flex; flex-direction: column; padding-right: 15px; }
+        .sticky-text span { font-size: 0.8rem; opacity: 0.8; }
+        .sticky-text strong { font-size: 1rem; }
+        .sticky-btn { background: white; color: black; padding: 8px 20px; border-radius: 30px; font-weight: bold; font-size: 0.9rem; }
 
-        /* MOBILE */
+        /* FOOTER */
+        footer { background: #2C1810; color: white; padding: 60px 20px; text-align: center; }
+        .footer-links a { color: rgba(255,255,255,0.7); margin: 0 15px; text-decoration: none; }
+
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3.5rem; }
-            .hero-content { padding: 2rem; }
-            .navbar { flex-direction: column; gap: 15px; }
-            .social-sidebar { 
-                top: auto; 
-                bottom: 0; 
-                right: 0; 
-                width: 100%; 
-                flex-direction: row; 
-                justify-content: center;
-                border-radius: 15px 15px 0 0;
-                transform: none;
-                border-right: 1px solid var(--border-soft);
-                border-bottom: none;
-            }
-            .social-sidebar a { flex: 1; padding: 18px; }
-            #scrollTopBtn { bottom: 90px; left: 20px; }
-            .form-box { padding: 2.5rem 1.5rem; }
-            section { padding: 5rem 1.5rem; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero-content { padding: 40px 20px; width: 90%; }
+            .benefits-strip { font-size: 0.7rem; gap: 15px; justify-content: space-between; }
         }
     </style>
 </head>
 <body>
 
-    <button onclick="topFunction()" id="scrollTopBtn" title="חזרה למעלה">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <div class="social-sidebar">
-        <a href="#" class="whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-    </div>
+    <a href="https://wa.me/972500000000" class="sticky-cta">
+        <div class="sticky-text">
+            <span>המבצע מסתיים בקרוב</span>
+            <strong>קבעי תור בוואטסאפ</strong>
+        </div>
+        <div class="sticky-btn">שלחי הודעה</div>
+    </a>
 
     <header>
-        <div class="navbar">
-            <div class="logo">COSMETICS</div>
-            <nav class="nav-links">
-                <a href="#services">טיפולים</a>
-                <a href="#gallery">תוצאות</a>
-                <a href="#contact">יצירת קשר</a>
-            </nav>
-        </div>
+        <div class="logo">GLAM<span>.</span></div>
+        <a href="#book" class="btn-outline" style="padding: 10px 25px; border-radius: 0; font-size: 0.9rem;">הזמנת תור אונליין</a>
     </header>
 
     <section class="hero">
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>אומנות הטיפוח והיופי</h1>
-            <p>בוטיק קוסמטיקה מתקדם המתמחה בבניית ציפורניים אנטומית, מניקור רוסי מדויק ועיצוב גבות בהתאמה אישית.</p>
-            <div style="margin-top: 2.5rem;">
-                <a href="#contact" class="btn">לתיאום תור</a>
-                <a href="#gallery" class="btn btn-outline" style="margin-right: 20px;">לגלריית העבודות</a>
-            </div>
+            <p class="serif">Beauty & Aesthetics</p>
+            <h1>תתעוררי כל בוקר <br><span class="serif" style="color: var(--accent);">מושלמת.</span></h1>
+            <p>אנחנו לא רק עושים ציפורניים וגבות. אנחנו יוצרים את הגרסה הכי טובה, נקייה וזוהרת שלך. בלי מאמץ.</p>
+            <a href="#services" class="btn">גלי את הטיפולים</a>
         </div>
     </section>
 
-    <section id="services">
-        <div class="container">
-            <div class="section-header">
-                <h2>המומחיות שלנו</h2>
-                <p>אנו משלבים טכניקות עבודה מתקדמות, חומרים איכותיים מהשורה הראשונה ושירות אישי ומפנק, כדי להבטיח לך תוצאות מושלמות ועמידות.</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-item">
-                    <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
-                    <h3>מניקור ג'ל ובנייה</h3>
-                    <p>טיפול יסודי בשיטה משולבת, מבנה אנטומי לחיזוק הציפורן הטבעית, ומריחת צבע מדויקת תחת הקוטיקולה.</p>
-                </div>
-                <div class="service-item">
-                    <div class="service-icon"><i class="fas fa-eye"></i></div>
-                    <h3>עיצוב גבות</h3>
-                    <p>אדריכלות גבות לפי מבנה הפנים, שיקום גבות דלילות, צביעה בצבע או חינה, והרמת גבות (Lamination).</p>
-                </div>
-                <div class="service-item">
-                    <div class="service-icon"><i class="fas fa-spa"></i></div>
-                    <h3>פדיקור קוסמטי</h3>
-                    <p>טיפול אסתטי ומפנק לכפות הרגליים, הכולל ניקוי יסודי, הסרת עור, פילינג והזנה למראה בריא ומטופח.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="benefits-strip">
+        <div class="benefit-item"><i class="fas fa-check"></i> 100% סטריליות</div>
+        <div class="benefit-item"><i class="fas fa-gem"></i> חומרים מובחרים</div>
+        <div class="benefit-item"><i class="fas fa-clock"></i> תוצאה שמחזיקה</div>
+    </div>
 
-    <section id="gallery">
-        <div class="container">
-            <div class="section-header">
-                <h2>לפני ואחרי</h2>
-                <p>אין כמו מראה עיניים. העבירי את העכבר על התמונות כדי לראות את המהפך.</p>
-            </div>
+    <section id="services" class="section">
+        <div class="section-title">
+            <span>Our Treatments</span>
+            <h2>מה בא לך היום?</h2>
+        </div>
+        <div class="services-grid">
             
-            <div class="ba-container">
-                <div class="ba-card">
-                    <img src="https://images.unsplash.com/photo-1616002567284-030830371359?ixlib=rb-1.2.1&w=500&q=80" alt="Before">
-                    <img src="https://images.unsplash.com/photo-1607947651301-9841c960160b?ixlib=rb-1.2.1&w=500&q=80" class="after-img" alt="After">
-                    <div class="hover-label">ציפורניים</div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Nails">
+                <div class="service-info">
+                    <h3>מניקור ג'ל רוסי</h3>
+                    <p>ניקוי עמוק, מבנה אנטומי מדויק וצבע שלא זז 3 שבועות.</p>
+                    <span class="service-btn">לפרטים וגלריה</span>
                 </div>
-                
-                <div class="ba-card">
-                    <img src="https://images.unsplash.com/photo-1588517025039-298519c49780?ixlib=rb-1.2.1&w=500&q=80" alt="Before">
-                    <img src="https://images.unsplash.com/photo-1594052810822-413626ad50bc?ixlib=rb-1.2.1&w=500&q=80" class="after-img" alt="After" style="object-position: top;">
-                    <div class="hover-label">גבות</div>
+            </div>
+
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1598410298518-e8dd66172583?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Brows">
+                <div class="service-info">
+                    <h3>עיצוב גבות ומיקרובליידינג</h3>
+                    <p>התאמה מושלמת למבנה הפנים בשיטת השיערה או הצללה.</p>
+                    <span class="service-btn">לפרטים וגלריה</span>
                 </div>
-                
-                <div class="ba-card">
-                    <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?ixlib=rb-1.2.1&w=500&q=80" alt="Before">
-                    <img src="https://images.unsplash.com/photo-1542451012-150a53137f43?ixlib=rb-1.2.1&w=500&q=80" class="after-img" alt="After">
-                    <div class="hover-label">מניקור</div>
+            </div>
+
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Makeup">
+                <div class="service-info">
+                    <h3>איפור ערב וכלות</h3>
+                    <p>להראות זוהרת, טבעית ובלתי נשכחת באירוע שלך.</p>
+                    <span class="service-btn">לפרטים וגלריה</span>
                 </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="reviews-section section">
+        <div class="section-title">
+            <span>Loved by 1,000+ Clients</span>
+            <h2>לקוחות מספרות</h2>
+        </div>
+        <div class="reviews-container">
+            <div class="review-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"אני מכורה! עשיתי גבות בפעם הראשונה ומאז אני לא צריכה להתאפר בבוקר. היד הכי עדינה שיש."</p>
+                <strong style="display:block; margin-top:10px;">- נועה כהן</strong>
+            </div>
+            <div class="review-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"המקום הכי סטרילי ונעים שהייתי בו. הג'ל מחזיק לי חודש שלם בלי שריטה. מומלץ בחום!"</p>
+                <strong style="display:block; margin-top:10px;">- דניאל לוי</strong>
+            </div>
+            <div class="review-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"שירות ברמה אחרת. מרגישים את ההשקעה בכל פרט קטן בקליניקה."</p>
+                <strong style="display:block; margin-top:10px;">- שירן א.</strong>
             </div>
         </div>
     </section>
 
-    <section id="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2>בואי נתאם לך תור</h2>
-                <p>השאירי פרטים ונחזור אליך בהקדם לתיאום הטיפול המושלם עבורך.</p>
-            </div>
-            <div class="form-box">
-                <form>
-                    <div class="input-group">
-                        <input type="text" placeholder="שם מלא" required>
-                    </div>
-                    <div class="input-group">
-                        <input type="tel" placeholder="מספר טלפון נייד" required>
-                    </div>
-                    <div class="input-group">
-                        <select>
-                            <option value="" disabled selected>באיזה טיפול את מעוניינת?</option>
-                            <option>בניית ציפורניים / מילוי</option>
-                            <option>עיצוב גבות</option>
-                            <option>פדיקור קוסמטי</option>
-                            <option>חבילה משולבת</option>
-                        </select>
-                    </div>
-                    <button type="button" class="btn" style="width: 100%;">לשליחת פרטים</button>
-                </form>
-            </div>
-        </div>
+    <section id="book" style="background: var(--text-dark); color: white; padding: 80px 20px; text-align: center;">
+        <h2 style="font-size: 3rem; margin-bottom: 20px;">מוכנה להתפנק?</h2>
+        <p style="margin-bottom: 40px; font-size: 1.2rem; opacity: 0.8;">התורים שלנו מתמלאים מהר. שרייני את המקום שלך עכשיו.</p>
+        <a href="https://wa.me/972500000000" class="btn" style="background: white; color: var(--text-dark); border: none;">מעבר לוואטסאפ לקביעה</a>
     </section>
 
     <footer>
-        <p>&copy; 2026 COSMETICS BOUTIQUE. כל הזכויות שמורות. <br> נבנה באהבה על ידי <strong>Landing.team</strong></p>
+        <div class="logo" style="margin-bottom: 20px;">GLAM<span>.</span></div>
+        <div class="footer-links">
+            <a href="#">אינסטגרם</a>
+            <a href="#">טיקטוק</a>
+            <a href="#">פייסבוק</a>
+        </div>
+        <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.5;">Demo by Landing.team © 2024</p>
     </footer>
 
-    <script>
-        // לוגיקה לכפתור חזרה למעלה
-        var mybutton = document.getElementById("scrollTopBtn");
-
-        window.onscroll = function() {scrollFunction()};
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                mybutton.style.display = "block";
-            } else {
-                mybutton.style.display = "none";
-            }
-        }
-
-        function topFunction() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        }
-    </script>
 </body>
 </html>
