@@ -3,344 +3,383 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GLAM Studio - איפור קבוע, ציפורניים וגבות</title>
+    <title>COSMETICS - בוטיק יופי וטיפוח</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;800&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&family=Cinzel+Decorative:wght@400;700&family=Playfair+Display:ital,wght@1,400..900&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --primary: #D4A373; /* גוון זהב-ניוד יוקרתי */
-            --primary-light: #FAEDCD;
-            --accent: #BC6C25;
-            --bg-pink: #FEFAE0; /* רקע שמנת נקי */
-            --bg-white: #FFFFFF;
-            --text-dark: #2C1810;
-            --text-gray: #6B7280;
+            --rose-gold: #B76E79; /* ורוד עתיק/זהב */
+            --rose-light: #F4E1E1; /* ורוד פודרה בהיר */
+            --deep-burgundy: #4A2C2C; /* בורדו עמוק לטקסט */
+            --cream: #FFFBF0; /* לבן שמנת */
+            --gold-accent: #D4AF37; /* נגיעות זהב */
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Assistant', sans-serif; background-color: var(--bg-pink); color: var(--text-dark); overflow-x: hidden; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Assistant', sans-serif; 
+            background-color: var(--cream); 
+            color: var(--deep-burgundy); 
+            overflow-x: hidden; 
+        }
         
         /* טיפוגרפיה */
-        h1, h2, h3 { font-family: 'Assistant', sans-serif; font-weight: 800; line-height: 1.1; }
-        .serif { font-family: 'Playfair Display', serif; font-style: italic; }
+        h1, h2, h3, .luxury-font { font-family: 'Cinzel Decorative', cursive; letter-spacing: 2px; }
+        .serif-italic { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; }
         
-        /* כפתורים */
+        /* כפתורים יוקרתיים */
         .btn {
             display: inline-block;
-            padding: 16px 40px;
-            background-color: var(--text-dark);
+            padding: 18px 45px;
+            background: linear-gradient(45deg, var(--rose-gold), #d48f99);
             color: white;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
-            border-radius: 50px;
-            transition: 0.3s;
-            text-transform: uppercase;
+            font-size: 1rem;
             letter-spacing: 1px;
-            border: 1px solid var(--text-dark);
-        }
-        
-        .btn:hover {
-            background-color: transparent;
-            color: var(--text-dark);
-            transform: scale(1.02);
+            transition: 0.4s;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
 
-        .btn-outline {
-            background-color: transparent;
-            color: var(--text-dark);
-            border: 1px solid var(--text-dark);
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 0%; height: 100%;
+            background: var(--deep-burgundy);
+            transition: 0.4s;
+            z-index: -1;
         }
         
-        .btn-outline:hover {
-            background-color: var(--text-dark);
-            color: white;
-        }
+        .btn:hover::before { width: 100%; }
+        .btn:hover { color: var(--rose-light); box-shadow: 0 10px 20px -10px rgba(183, 110, 121, 0.5); }
 
-        /* HEADER */
+        /* HEADER & LOGO */
         header {
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: white;
-            position: sticky;
+            position: absolute;
             top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 50px;
             z-index: 100;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: flex-end; /* לוגו בצד ימין */
+            align-items: center;
         }
 
-        .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: 2px; }
-        .logo span { color: var(--accent); }
+        .logo { 
+            font-size: 2rem; 
+            font-weight: 700; 
+            color: var(--rose-gold); 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px; right: 0;
+            width: 50%; height: 2px;
+            background: var(--gold-accent);
+        }
 
-        /* HERO SECTION - כמו באתר ששלחת */
+        /* HERO SECTION - PARALLAX & KILLER NAILS */
         .hero {
             position: relative;
-            height: 90vh;
+            height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: url('https://images.unsplash.com/photo-1596462502278-27bfdd403348?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-            padding: 20px;
+            /* תמונת ציפורניים מטורפת ברקע */
+            background: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+            background-attachment: fixed; /* אפקט פרלקס */
+            padding: 0 5%;
         }
 
         .hero-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255,255,255,0.3);
-            backdrop-filter: blur(2px);
+            /* גרדיאנט כהה כדי שהטקסט יקפוץ */
+            background: linear-gradient(to right, rgba(74, 44, 44, 0.8), rgba(183, 110, 121, 0.4));
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
-            background: rgba(255,255,255,0.8);
-            padding: 60px 40px;
-            max-width: 600px;
-            border: 1px solid white;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        .hero h1 { font-size: 3.5rem; margin-bottom: 15px; color: var(--text-dark); }
-        .hero p { font-size: 1.2rem; margin-bottom: 30px; color: var(--text-gray); }
-
-        /* BENEFITS STRIP */
-        .benefits-strip {
-            background: var(--text-dark);
+            max-width: 700px;
             color: white;
-            padding: 15px;
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            /* אפקט זכוכית */
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-right: 4px solid var(--rose-gold);
         }
-        .benefit-item { display: flex; align-items: center; gap: 10px; }
 
-        /* SERVICES GRID */
-        .section { padding: 80px 20px; }
-        .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-size: 3rem; }
-        .section-title span { color: var(--accent); display: block; font-size: 1.2rem; font-weight: 400; margin-bottom: 10px; }
+        .hero h1 { font-size: 4.5rem; line-height: 1; margin-bottom: 20px; text-shadow: 2px 2px 10px rgba(0,0,0,0.3); }
+        .hero h1 span { color: var(--rose-gold); display: block; font-size: 2.5rem; font-family: 'Playfair Display', serif;font-style: italic; text-transform: none; margin-bottom: 10px;}
+        .hero p { font-size: 1.3rem; margin-bottom: 40px; color: var(--rose-light); }
+
+        /* INTRO SECTION - הוספת עניין */
+        .intro-section {
+            padding: 100px 5%;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            background-color: var(--cream);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .intro-image {
+            flex: 1;
+            position: relative;
+            height: 600px;
+        }
+        
+        .intro-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            box-shadow: 20px 20px 0 var(--rose-light);
+        }
+        
+        .intro-content { flex: 1; padding-left: 50px; }
+        .intro-content h2 { font-size: 3rem; margin-bottom: 30px; color: var(--rose-gold); }
+        .intro-content p { font-size: 1.2rem; margin-bottom: 20px; line-height: 1.8; }
+        .divider { width: 100px; height: 3px; background: var(--gold-accent); margin: 30px 0; }
+
+        /* SERVICES SECTION - עיצוב יוקרתי */
+        .services-section {
+            padding: 120px 5%;
+            background-color: var(--rose-light);
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); /* טקסטורה עדינה */
+            text-align: center;
+        }
+
+        .section-header { margin-bottom: 70px; }
+        .section-header h2 { font-size: 3.5rem; color: var(--deep-burgundy); }
+        .section-header span { font-family: 'Playfair Display', serif; font-style: italic; color: var(--rose-gold); font-size: 1.5rem; }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
         }
 
         .service-card {
             position: relative;
-            height: 450px;
+            height: 500px;
+            background: white;
             overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            transition: 0.4s;
             group: cursor;
         }
 
-        .service-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.5s;
-        }
+        .service-card:hover { transform: translateY(-15px); box-shadow: 0 25px 50px rgba(183, 110, 121, 0.2); }
 
-        .service-card:hover img { transform: scale(1.1); }
+        .service-img { height: 100%; width: 100%; position: relative; }
+        .service-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        .service-card:hover .service-img img { transform: scale(1.1); }
 
-        .service-info {
+        .service-overlay {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 30px;
-            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            bottom: 0; left: 0; width: 100%;
+            background: linear-gradient(to top, var(--deep-burgundy), transparent);
+            padding: 40px;
             color: white;
-            text-align: center;
-        }
-
-        .service-info h3 { font-size: 1.8rem; margin-bottom: 10px; }
-        .service-btn {
-            color: white;
-            text-decoration: underline;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-        }
-
-        /* REVIEWS / SOCIAL PROOF */
-        .reviews-section { background: white; text-align: center; }
-        .reviews-container {
-            display: flex;
-            gap: 30px;
-            overflow-x: auto;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            scrollbar-width: none;
-        }
-        
-        .review-card {
-            min-width: 300px;
-            background: var(--bg-pink);
-            padding: 30px;
-            border-radius: 0;
             text-align: right;
-            border: 1px solid #eee;
+            transform: translateY(100px); /* מוסתר חלקית */
+            transition: 0.4s;
         }
-        .stars { color: var(--accent); margin-bottom: 15px; }
 
-        /* STICKY MOBILE CTA */
-        .sticky-cta {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 400px;
-            background: var(--text-dark);
-            color: white;
-            padding: 15px;
-            border-radius: 50px;
+        .service-card:hover .service-overlay { transform: translateY(0); background: linear-gradient(to top, var(--deep-burgundy) 60%, transparent); }
+
+        .service-overlay h3 { font-size: 2rem; margin-bottom: 15px; color: var(--rose-gold); }
+        .service-overlay p { font-size: 1.1rem; opacity: 0; transition: 0.4s; transform: translateY(20px); }
+        .service-card:hover .service-overlay p { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+
+
+        /* ATMOSPHERE BANNER */
+        .atmosphere-banner {
+            height: 500px;
+            background: url('https://images.unsplash.com/photo-1633681926022-84c23e8cb246?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat fixed;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            z-index: 999;
-            text-decoration: none;
-            transition: 0.3s;
+            justify-content: center;
+            position: relative;
+        }
+        .atmosphere-overlay {
+            background: rgba(183, 110, 121, 0.6); /* שכבת ורוד חצי שקופה */
+            position: absolute; top:0; left:0; width:100%; height:100%;
+        }
+        .atmosphere-content {
+            position: relative; z-index: 2; text-align: center; color: white;
+            padding: 40px; border: 2px solid rgba(255,255,255,0.3);
+        }
+        .atmosphere-content h2 { font-size: 3rem; }
+        .atmosphere-content p { font-size: 1.5rem; font-family: 'Playfair Display', serif; font-style: italic; }
+
+
+        /* STICKY MOBILE CTA & WHATSAPP */
+        .whatsapp-float {
+            position: fixed; bottom: 90px; left: 20px;
+            background: #25D366; color: white;
+            width: 60px; height: 60px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 998; transition: 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        .sticky-cta {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background: var(--deep-burgundy); color: var(--rose-light);
+            padding: 15px 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 999; text-decoration: none;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+            border-top: 2px solid var(--rose-gold);
         }
         
-        .sticky-cta:hover { transform: translateX(-50%) translateY(-5px); }
-        .sticky-text { display: flex; flex-direction: column; padding-right: 15px; }
-        .sticky-text span { font-size: 0.8rem; opacity: 0.8; }
-        .sticky-text strong { font-size: 1rem; }
-        .sticky-btn { background: white; color: black; padding: 8px 20px; border-radius: 30px; font-weight: bold; font-size: 0.9rem; }
+        .sticky-text { display: flex; flex-direction: column; }
+        .sticky-text strong { font-size: 1.1rem; font-family: 'Cinzel Decorative'; }
+        .sticky-btn { background: var(--rose-gold); color: white; padding: 10px 25px; border-radius: 0; font-weight: bold; font-size: 0.9rem; letter-spacing: 1px; }
 
         /* FOOTER */
-        footer { background: #2C1810; color: white; padding: 60px 20px; text-align: center; }
-        .footer-links a { color: rgba(255,255,255,0.7); margin: 0 15px; text-decoration: none; }
+        footer { background: var(--deep-burgundy); color: var(--rose-light); padding: 80px 5%; text-align: center; background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); }
+        .footer-logo { font-size: 2.5rem; color: var(--rose-gold); margin-bottom: 20px; display: inline-block; }
+        .footer-links { margin-top: 30px; }
+        .footer-links a { color: var(--rose-light); margin: 0 15px; text-decoration: none; font-size: 1.2rem; transition: 0.3s; }
+        .footer-links a:hover { color: var(--rose-gold); }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero-content { padding: 40px 20px; width: 90%; }
-            .benefits-strip { font-size: 0.7rem; gap: 15px; justify-content: space-between; }
+            header { justify-content: center; padding: 20px; }
+            .hero h1 { font-size: 3rem; }
+            .hero h1 span { font-size: 1.8rem; }
+            .hero-content { padding: 30px; width: 95%; backdrop-filter: blur(5px); }
+            
+            .intro-section { flex-direction: column; padding: 60px 5%; }
+            .intro-image { height: 400px; width: 100%; }
+            .intro-content { padding-left: 0; padding-top: 40px; }
+            .intro-content h2 { font-size: 2.5rem; }
+
+            .services-grid { grid-template-columns: 1fr; }
+            .service-card { height: 400px; }
+            .atmosphere-content h2 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/972500000000" class="sticky-cta">
-        <div class="sticky-text">
-            <span>המבצע מסתיים בקרוב</span>
-            <strong>קבעי תור בוואטסאפ</strong>
-        </div>
-        <div class="sticky-btn">שלחי הודעה</div>
-    </a>
-
     <header>
-        <div class="logo">GLAM<span>.</span></div>
-        <a href="#book" class="btn-outline" style="padding: 10px 25px; border-radius: 0; font-size: 0.9rem;">הזמנת תור אונליין</a>
+        <div class="logo">COSMETICS</div>
     </header>
 
     <section class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <p class="serif">Beauty & Aesthetics</p>
-            <h1>תתעוררי כל בוקר <br><span class="serif" style="color: var(--accent);">מושלמת.</span></h1>
-            <p>אנחנו לא רק עושים ציפורניים וגבות. אנחנו יוצרים את הגרסה הכי טובה, נקייה וזוהרת שלך. בלי מאמץ.</p>
-            <a href="#services" class="btn">גלי את הטיפולים</a>
+            <h1>
+                <span class="serif-italic">The Art of Beauty</span>
+                שלמות בכל פרט.
+            </h1>
+            <p>חווית טיפוח אקסקלוסיבית המשלבת טכניקות מתקדמות, חומרים מהשורה הראשונה ואווירה שאין שניה לה.</p>
+            <a href="#services" class="btn">גלי את הקולקציה</a>
         </div>
     </section>
 
-    <div class="benefits-strip">
-        <div class="benefit-item"><i class="fas fa-check"></i> 100% סטריליות</div>
-        <div class="benefit-item"><i class="fas fa-gem"></i> חומרים מובחרים</div>
-        <div class="benefit-item"><i class="fas fa-clock"></i> תוצאה שמחזיקה</div>
-    </div>
+    <section class="intro-section">
+        <div class="intro-image">
+            <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=1000&auto=format&fit=crop" alt="Luxury Salon">
+        </div>
+        <div class="intro-content">
+            <h2>יותר מטיפול, זו חוויה.</h2>
+            <div class="divider"></div>
+            <p>הסטודיו שלנו הוא המקדש שלך. מקום בו אסתטיקה פוגשת דיוק, וכל לקוחה מקבלת יחס של VIP.</p>
+            <p>אנחנו לא מאמינים בטרנדים חולפים, אלא ביצירת מראה על-זמני, נקי ומוקפד שמדגיש את היופי הטבעי שלך.</p>
+            <p class="serif-italic" style="font-size: 1.5rem; color: var(--rose-gold); margin-top: 30px;">ברוכה הבאה לסטנדרט החדש.</p>
+        </div>
+    </section>
 
-    <section id="services" class="section">
-        <div class="section-title">
-            <span>Our Treatments</span>
-            <h2>מה בא לך היום?</h2>
+    <section id="services" class="services-section">
+        <div class="section-header">
+            <span>Our Expertise</span>
+            <h2>תפריט הטיפולים</h2>
         </div>
         <div class="services-grid">
             
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Nails">
-                <div class="service-info">
-                    <h3>מניקור ג'ל רוסי</h3>
-                    <p>ניקוי עמוק, מבנה אנטומי מדויק וצבע שלא זז 3 שבועות.</p>
-                    <span class="service-btn">לפרטים וגלריה</span>
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1600581011376-44596c416a87?q=80&w=800&auto=format&fit=crop" alt="Nails">
+                </div>
+                <div class="service-overlay">
+                    <h3>מניקור פרימיום</h3>
+                    <p>מבנה אנטומי מדויק, עבודה סטרילית וגימור מושלם שמחזיק לאורך זמן. אומנות על הציפורן.</p>
                 </div>
             </div>
 
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1598410298518-e8dd66172583?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Brows">
-                <div class="service-info">
-                    <h3>עיצוב גבות ומיקרובליידינג</h3>
-                    <p>התאמה מושלמת למבנה הפנים בשיטת השיערה או הצללה.</p>
-                    <span class="service-btn">לפרטים וגלריה</span>
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1598410298518-e8dd66172583?q=80&w=800&auto=format&fit=crop" alt="Brows">
+                </div>
+                <div class="service-overlay">
+                    <h3>אדריכלות גבות</h3>
+                    <p>עיצוב בהתאמה אישית לתווי הפנים, בשיטות המתקדמות ביותר למראה טבעי ומודגש.</p>
                 </div>
             </div>
 
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Makeup">
-                <div class="service-info">
-                    <h3>איפור ערב וכלות</h3>
-                    <p>להראות זוהרת, טבעית ובלתי נשכחת באירוע שלך.</p>
-                    <span class="service-btn">לפרטים וגלריה</span>
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1588979355313-6711a095465f?q=80&w=800&auto=format&fit=crop" alt="Lashes">
+                </div>
+                <div class="service-overlay">
+                    <h3>הרמת ריסים</h3>
+                    <p>פתיחת המבט והדגשת הריסים הטבעיים שלך, למראה ערני וזוהר ללא מאמץ.</p>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <section class="reviews-section section">
-        <div class="section-title">
-            <span>Loved by 1,000+ Clients</span>
-            <h2>לקוחות מספרות</h2>
-        </div>
-        <div class="reviews-container">
-            <div class="review-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p>"אני מכורה! עשיתי גבות בפעם הראשונה ומאז אני לא צריכה להתאפר בבוקר. היד הכי עדינה שיש."</p>
-                <strong style="display:block; margin-top:10px;">- נועה כהן</strong>
-            </div>
-            <div class="review-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p>"המקום הכי סטרילי ונעים שהייתי בו. הג'ל מחזיק לי חודש שלם בלי שריטה. מומלץ בחום!"</p>
-                <strong style="display:block; margin-top:10px;">- דניאל לוי</strong>
-            </div>
-            <div class="review-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p>"שירות ברמה אחרת. מרגישים את ההשקעה בכל פרט קטן בקליניקה."</p>
-                <strong style="display:block; margin-top:10px;">- שירן א.</strong>
-            </div>
+    <section class="atmosphere-banner">
+        <div class="atmosphere-overlay"></div>
+        <div class="atmosphere-content">
+            <p>Ready for your transformation?</p>
+            <h2>הגיע הזמן שלך לזהור</h2>
         </div>
     </section>
 
-    <section id="book" style="background: var(--text-dark); color: white; padding: 80px 20px; text-align: center;">
-        <h2 style="font-size: 3rem; margin-bottom: 20px;">מוכנה להתפנק?</h2>
-        <p style="margin-bottom: 40px; font-size: 1.2rem; opacity: 0.8;">התורים שלנו מתמלאים מהר. שרייני את המקום שלך עכשיו.</p>
-        <a href="https://wa.me/972500000000" class="btn" style="background: white; color: var(--text-dark); border: none;">מעבר לוואטסאפ לקביעה</a>
-    </section>
+    <a href="https://wa.me/972500000000" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <a href="https://wa.me/972500000000" class="sticky-cta">
+        <div class="sticky-text">
+            <span>לתיאום תור VIP</span>
+            <strong>דברי איתנו בוואטסאפ</strong>
+        </div>
+        <div class="sticky-btn">לקביעה מיידית</div>
+    </a>
 
     <footer>
-        <div class="logo" style="margin-bottom: 20px;">GLAM<span>.</span></div>
+        <div class="footer-logo luxury-font">COSMETICS</div>
+        <p class="serif-italic">Excellence in every detail.</p>
         <div class="footer-links">
-            <a href="#">אינסטגרם</a>
-            <a href="#">טיקטוק</a>
-            <a href="#">פייסבוק</a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
         </div>
-        <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.5;">Demo by Landing.team © 2024</p>
+        <p style="margin-top: 50px; font-size: 0.8rem; opacity: 0.6;">© 2024 Premium Demo by Landing.team</p>
     </footer>
 
 </body>
